@@ -24,10 +24,16 @@ const seedData = async () => {
     await User.deleteMany();
 
     // Create Admin and Customer users
-    const adminPassword = await bcrypt.hash('admin123', 10);
+    const adminPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'VerdeAdmin@2026', 10);
     const customerPassword = await bcrypt.hash('customer123', 10);
 
     const createdUsers = await User.insertMany([
+      {
+        name: 'Atelier Admin',
+        email: 'admin@verdeluxe.com',
+        password: adminPassword,
+        role: 'admin'
+      },
       {
         name: 'Store Admin',
         email: 'admin@greenhole.com',

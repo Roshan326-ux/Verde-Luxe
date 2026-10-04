@@ -38,19 +38,6 @@ export const AuthModal = ({ isOpen, onClose }) => {
     }
   };
 
-  const fillDemo = (role) => {
-    setError(null);
-    if (role === 'admin') {
-      setEmail('admin@greenhole.com');
-      setPassword('admin123');
-      setMode('login');
-    } else {
-      setEmail('customer@greenhole.com');
-      setPassword('customer123');
-      setMode('login');
-    }
-  };
-
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
@@ -136,49 +123,6 @@ export const AuthModal = ({ isOpen, onClose }) => {
           >
             Register
           </button>
-        </div>
-
-        {/* Quick Demo Autofill Helper */}
-        <div style={{
-          background: 'rgba(16, 185, 129, 0.08)',
-          border: '1px dashed rgba(16, 185, 129, 0.3)',
-          borderRadius: 'var(--radius-md)',
-          padding: '10px 14px',
-          marginBottom: '18px',
-          fontSize: '0.78rem'
-        }}>
-          <div style={{ fontWeight: '600', color: 'var(--emerald-light)', marginBottom: '4px' }}>
-            Instant Testing (1-Click Fill):
-          </div>
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <button
-              type="button"
-              onClick={() => fillDemo('admin')}
-              style={{
-                padding: '4px 10px',
-                borderRadius: '4px',
-                background: 'rgba(245, 158, 11, 0.2)',
-                color: 'var(--gold-light)',
-                fontWeight: '600',
-                fontSize: '0.75rem'
-              }}
-            >
-              Fill Admin Demo
-            </button>
-            <button
-              type="button"
-              onClick={() => fillDemo('customer')}
-              style={{
-                padding: '4px 10px',
-                borderRadius: '4px',
-                background: 'rgba(255, 255, 255, 0.1)',
-                color: '#fff',
-                fontSize: '0.75rem'
-              }}
-            >
-              Fill Customer Demo
-            </button>
-          </div>
         </div>
 
         {error && (

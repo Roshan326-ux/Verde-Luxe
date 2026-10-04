@@ -19,12 +19,20 @@ class MockStore {
     }));
 
     // Seed default admin and customer
-    const adminPassword = await bcrypt.hash('admin123', 10);
+    const adminPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'VerdeAdmin@2026', 10);
     const customerPassword = await bcrypt.hash('customer123', 10);
 
     this.users = [
       {
         _id: 'user_admin',
+        name: 'Atelier Admin',
+        email: 'admin@verdeluxe.com',
+        password: adminPassword,
+        role: 'admin',
+        createdAt: new Date().toISOString()
+      },
+      {
+        _id: 'user_admin_legacy',
         name: 'Store Admin',
         email: 'admin@greenhole.com',
         password: adminPassword,
