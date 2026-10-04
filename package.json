@@ -1,13 +1,22 @@
 {
   "name": "greenhole-fashion-ecommerce",
   "version": "1.0.0",
-  "description": "Premium Fashion & Lifestyle MERN Stack E-commerce Application",
+  "type": "module",
   "scripts": {
+    "build": "cd client && npm install && npm run build",
     "dev": "concurrently \"npm run server --prefix server\" \"npm run dev --prefix client\"",
     "install:all": "npm install && npm install --prefix server && npm install --prefix client",
     "server": "npm run dev --prefix server",
     "client": "npm run dev --prefix client",
     "seed": "npm run seed --prefix server"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

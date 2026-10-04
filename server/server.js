@@ -41,7 +41,11 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`🚀 Green Hole E-Commerce Server running on http://localhost:${PORT}`);
-  console.log(`📦 Database: ${getDBStatus().type}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Green Hole E-Commerce Server running on http://localhost:${PORT}`);
+    console.log(`📦 Database: ${getDBStatus().type}`);
+  });
+}
+
+export default app;

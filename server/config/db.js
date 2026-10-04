@@ -7,6 +7,10 @@ dns.setServers(['8.8.8.8', '8.8.4.4']);
 let isMongoConnected = false;
 
 export const connectDB = async () => {
+  if (mongoose.connection.readyState >= 1) {
+    isMongoConnected = true;
+    return true;
+  }
   try {
     const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/greenhole_fashion';
     
