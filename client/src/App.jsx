@@ -13,6 +13,7 @@ import { CheckoutModal } from './components/CheckoutModal';
 import { AuthModal } from './components/AuthModal';
 import { AdminPanel } from './components/AdminPanel';
 import { MyOrdersModal } from './components/MyOrdersModal';
+import { WishlistDrawer } from './components/WishlistDrawer';
 import { Footer } from './components/Footer';
 
 import { CheckCircle2, AlertCircle, Info, Sparkles, Loader2, RefreshCw } from 'lucide-react';
@@ -217,6 +218,11 @@ function MainShop() {
         isOpen={isOrdersOpen}
         onClose={() => setIsOrdersOpen(false)}
         onOpenAuth={() => setIsAuthOpen(true)}
+      />
+
+      <WishlistDrawer
+        onSelectProduct={(product) => setSelectedProduct(product)}
+        onScrollToProducts={scrollToProducts}
       />
     </div>
   );

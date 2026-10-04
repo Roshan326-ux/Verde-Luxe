@@ -23,7 +23,7 @@ export const Navbar = ({
   dbStatus
 }) => {
   const { user, isAdmin, logout } = useAuth();
-  const { totalItemsCount, totalPrice, setIsCartOpen, wishlist } = useCart();
+  const { totalItemsCount, totalPrice, setIsCartOpen, wishlist, setIsWishlistOpen } = useCart();
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -179,15 +179,12 @@ export const Navbar = ({
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
           {/* Wishlist Button */}
           <button
-            onClick={() => {
-              if (wishlist.length > 0) {
-                // Just scroll to products or inform
-              }
-            }}
+            onClick={() => setIsWishlistOpen(true)}
             className="btn-icon"
+            style={{ position: 'relative' }}
             title={`Wishlist (${wishlist.length} saved)`}
           >
-            <Heart size={20} />
+            <Heart size={20} fill={wishlist.length > 0 ? '#ef4444' : 'none'} color={wishlist.length > 0 ? '#ef4444' : 'currentColor'} />
             {wishlist.length > 0 && (
               <span style={{
                 position: 'absolute',
@@ -352,6 +349,28 @@ export const Navbar = ({
                 >
                   <Package size={16} />
                   <span>My Orders</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setUserDropdownOpen(false);
+                    setIsWishlistOpen(true);
+                  }}
+                  style={{
+                    width: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    padding: '10px 12px',
+                    background: 'transparent',
+                    color: 'var(--text-secondary)',
+                    borderRadius: 'var(--radius-sm)',
+                    fontSize: '0.85rem',
+                    marginTop: '4px'
+                  }}
+                >
+                  <Heart size={16} color="#ef4444" />
+                  <span>Saved Wishlist ({wishlist.length})</span>
                 </button>
 
                 <button

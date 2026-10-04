@@ -16,6 +16,7 @@ export const CartProvider = ({ children }) => {
   const [coupon, setCoupon] = useState('');
   const [discountPercent, setDiscountPercent] = useState(0);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
 
   useEffect(() => {
@@ -141,6 +142,8 @@ export const CartProvider = ({ children }) => {
         wishlist,
         isCartOpen,
         setIsCartOpen,
+        isWishlistOpen,
+        setIsWishlistOpen,
         toastMessage,
         showToast,
         addToCart,
