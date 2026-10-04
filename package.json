@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "cd client && npm install && npm run build",
+    "build": "npm run build --prefix client",
     "dev": "concurrently \"npm run server --prefix server\" \"npm run dev --prefix client\"",
     "install:all": "npm install && npm install --prefix server && npm install --prefix client",
     "server": "npm run dev --prefix server",
